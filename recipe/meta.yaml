@@ -1,7 +1,7 @@
 {% set name = "loghub" %}
-{% set version = "0.2" %}
+{% set version = "0.2.1" %}
 {% set hash_type = "sha256" %}
-{% set hash = "7c33f2b797e39808c18453acc9fb8ed3a0670acdf7540f09950ccd9a6777a036" %}
+{% set hash = "c752a0be5fd82242ce30f5af780a6aeae47768719bcb1ed7fe3fef7a8381c19f" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
   {{ hash_type }}: {{ hash }}
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record=record.txt
   entry_points:
     - loghub = loghub.cli.main:main
