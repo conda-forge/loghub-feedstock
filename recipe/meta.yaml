@@ -1,7 +1,7 @@
 {% set name = "loghub" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 {% set hash_type = "sha256" %}
-{% set hash = "460fe0b36723fad652c0788bf020c9e6653672561faf9f28ba35a976dbc13f15" %}
+{% set hash = "1b6f9a11552887db980acf0c4117ffd333e3165003968b3767d7981210a29357" %}
 
 package:
   name: {{ name|lower }}
