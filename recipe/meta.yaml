@@ -1,7 +1,7 @@
 {% set name = "loghub" %}
-{% set version = "0.3.3" %}
+{% set version = "0.4.0" %}
 {% set hash_type = "sha256" %}
-{% set hash = "4a5c0f08f8fa43e78d2b308e2a12e017419806b8c690a1a306b7478729064263" %}
+{% set hash = "62e490be45b7d19d667de028c5858c6163ee715754a849092b5e17e878da5a0c" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +14,7 @@ source:
 
 build:
   noarch: python
-  number: 2
+  number: 0
   script: python -m pip install --no-deps --ignore-installed .
   entry_points:
     - loghub = loghub.cli.main:main
