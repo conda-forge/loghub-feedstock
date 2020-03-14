@@ -27,6 +27,7 @@ requirements:
   run:
     - jinja2
     - python
+    - requests
 
 test:
   commands:
