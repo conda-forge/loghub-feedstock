@@ -1,7 +1,6 @@
 {% set name = "loghub" %}
-{% set version = "0.4.0" %}
-{% set hash_type = "sha256" %}
-{% set hash = "62e490be45b7d19d667de028c5858c6163ee715754a849092b5e17e878da5a0c" %}
+{% set version = "0.5.0" %}
+{% set hash = "3e590bac578f9b23cb8cb3e8724913bd38cf648cffdf9500c3698ad6e6d124c0" %}
 
 package:
   name: {{ name|lower }}
@@ -10,12 +9,12 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash }}
+  sha256: {{ hash }}
 
 build:
   noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - loghub = loghub.cli.main:main
     - loghub-labels = loghub.cli.label_creator:main
@@ -28,6 +27,7 @@ requirements:
   run:
     - jinja2
     - python
+    - requests
 
 test:
   commands:
