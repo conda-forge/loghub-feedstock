@@ -5,7 +5,7 @@ Home: https://github.com/spyder-ide/loghub
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Generate changelogs based on Github milestones or tags.
 
