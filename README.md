@@ -11,6 +11,8 @@ Summary: Generate changelogs based on Github milestones or tags.
 
 Development: https://github.com/spyder-ide/loghub
 
+Documentation: https://github.com/spyder-ide/loghub/blob/master/README.md
+
 Generate changelogs based on Github milestones or tags.
 
 
