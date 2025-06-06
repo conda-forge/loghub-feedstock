@@ -1,37 +1,44 @@
 {% set name = "loghub" %}
+{% set import = "loghub" %}
+{% set entrypoint = "loghub" %}
 {% set version = "0.5.1" %}
-{% set hash = "cea67512cddbe3c8d2e8f6e2010d10b269f2f3f53ca767c09ccd549e316185a7" %}
+{% set sha256 = "cea67512cddbe3c8d2e8f6e2010d10b269f2f3f53ca767c09ccd549e316185a7" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ hash }}
+  url: https://pypi.org/packages/source/{{ name[0]|lower }}/{{ name|lower }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
   noarch: python
-  number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
-    - loghub = loghub.cli.main:main
-    - loghub-labels = loghub.cli.label_creator:main
+    - {{ entrypoint }} = {{ import }}.cli.main:main
+    - loghub-labels = {{ import }}.cli.label_creator:main
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
     - setuptools
   run:
     - jinja2
-    - python
+    - python >={{ python_min }}
     - requests
 
 test:
+  requires:
+    - python {{ python_min }}
+    - pip
+  imports:
+    - {{ import }}
   commands:
-    - loghub --help
+    - pip check
+    - {{ entrypoint }} --help
     - loghub-labels --help
 
 about:
@@ -43,6 +50,7 @@ about:
   description: |
     Generate changelogs based on Github milestones or tags.
   dev_url: https://github.com/spyder-ide/loghub
+  doc_url: https://github.com/spyder-ide/loghub/blob/master/README.md
 
 extra:
   recipe-maintainers:
